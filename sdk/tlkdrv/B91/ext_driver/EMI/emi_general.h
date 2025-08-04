@@ -1,14 +1,3 @@
-/*
- * emi_general.h
- *
- *  Created on: 2023Äê4ÔÂ23ÈÕ
- *      Author: Admin
- */
-
-#ifndef TLKDRV_B92_EXT_DRIVER_EMI_EMI_GENERAL_H_
-#define TLKDRV_B92_EXT_DRIVER_EMI_EMI_GENERAL_H_
-
-void emi_start();
-void emi_loop_server();
-
-#endif /* TLKDRV_B92_EXT_DRIVER_EMI_EMI_GENERAL_H_ */
+version https://git-lfs.github.com/spec/v1
+oid sha256:50c5474b7b5fe758fe7689e6d6235909cb831513b66633da0b1189d3da16afa7
+size 276

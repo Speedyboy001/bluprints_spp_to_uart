@@ -1,10 +1,3 @@
-tlkdrv/B91/ext_driver/setting/config_obj.o: \
- ../tlkdrv/B91/ext_driver/setting/config_obj.c \
- ../tlkdrv/B91/ext_driver/setting/config_obj.h \
- E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/string.h \
- E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/compiler.h \
- E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/types.h
-../tlkdrv/B91/ext_driver/setting/config_obj.h:
-E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/string.h:
-E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/compiler.h:
-E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/types.h:
+version https://git-lfs.github.com/spec/v1
+oid sha256:ded095252d77e7693058fd7d78f2423b9fe8dedbb61b2ca4e2616595c7070275
+size 815

@@ -1,4 +1,3 @@
-tlkdrv/ext/lcd/st77903_data/tlkdrv_st77903_foreBuffer.o: \
- ../tlkdrv/ext/lcd/st77903_data/tlkdrv_st77903_foreBuffer.c \
- ../tlkdrv/ext/lcd/st77903_data/tlkdrv_st77903_foreBuffer.h
-../tlkdrv/ext/lcd/st77903_data/tlkdrv_st77903_foreBuffer.h:
+version https://git-lfs.github.com/spec/v1
+oid sha256:afdd25119d11ad4ffa6da25a03b93801c46ae2f78ff8b5c57e2aa76a73fe2a9a
+size 241

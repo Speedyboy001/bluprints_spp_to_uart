@@ -1,6 +1,3 @@
-{
-    "editor.defaultFormatter": "ms-vscode.cpptools",
-    "editor.formatOnPaste": true,
-    "editor.formatOnType": true,
-    "notebook.formatOnSave.enabled": true
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1f20a31b63ef856f2daa92c2689a0846b5377bc1f752ade4edcdf334f5a817aa
+size 170

@@ -1,24 +1,3 @@
-################################################################################
-# Automatically-generated file. Do not edit!
-################################################################################
-
-# Add inputs and outputs from these tool invocations to the build variables 
-S_UPPER_SRCS += \
-../core/B91/cstartup_951x.S 
-
-OBJS += \
-./core/B91/cstartup_951x.o 
-
-S_UPPER_DEPS += \
-./core/B91/cstartup_951x.d 
-
-
-# Each subdirectory must supply rules for building sources it contributes
-core/B91/%.o: ../core/B91/%.S core/B91/subdir.mk
-	@echo 'Building file: $<'
-	@echo 'Invoking: GNU RISC-V Cross Assembler'
-	riscv32-elf-gcc -mcmodel=medium -O2 -fmessage-length=0 -ffunction-sections -fdata-sections -fsingle-precision-constant -flto -Wunused -Wuninitialized -Wlogical-op -Warray-bounds -Wlto-type-mismatch -Wimplicit-function-declaration -Wlto-type-mismatch -Wreturn-type  -g3 -x assembler-with-cpp -DTLKAPP_GENERAL_ENABLE=1 -DMCU_CORE_B91=1 -DMCU_CORE_B92=2 -DMCU_CORE_TYPE=MCU_CORE_B91 -DTLKHW_TYPE_C1T213A83_V5_1=1 -DTLKHW_TYPE_C1T213A20_V1_3=2 -DTLKHW_TYPE=TLKHW_TYPE_C1T213A83_V5_1 -I"E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk" -I"E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core" -I"E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\tlkdrv\B91" -c -fmessage-length=0 -fno-builtin -fomit-frame-pointer -fno-strict-aliasing -fno-jump-tables -fshort-wchar -fuse-ld=bfd -mext-dsp -fpack-struct  -fno-delete-null-pointer-checks -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
-	@echo 'Finished building: $<'
-	@echo ' '
-
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:d675abaf3fb3c9be96eb54df5ea9aca94170b05bb39fae8546791256237c6b30
+size 1682

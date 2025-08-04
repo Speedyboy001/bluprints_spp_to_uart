@@ -1,14 +1,3 @@
-@echo off
-set "folderToDelete=output"
-set "folderCount=0"
-
-for /d /r %%i in (*%folderToDelete%) do (
-    if /i "%%~nxi"=="%folderToDelete%" (
-        echo Deleting folder: "%%~i"
-        rd /s /q "%%~i"
-        set /a "folderCount+=1"
-    )
-)
-
-echo %folderCount% folders were deleted.
-pause
+version https://git-lfs.github.com/spec/v1
+oid sha256:5f73f314a2b7b64e13c204f67c9f66ec3d7f8fe7d5809dc6a930c943d4f2810b
+size 290

@@ -1,2 +1,3 @@
-tlkdrv/ext/codec/tlkdrv_iisslv_b92.o: \
- ../tlkdrv/ext/codec/tlkdrv_iisslv_b92.c
+version https://git-lfs.github.com/spec/v1
+oid sha256:fe0f9e1dacc51c30dc71479a3c286e374cc18b01cc64b55e233f26bef8533919
+size 81

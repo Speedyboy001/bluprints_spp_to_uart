@@ -1,6 +1,3 @@
-1. 新增串口协议动态切换(CPC)
-2. 优化串口下载速率
-3. 新增支持OTA升级
-4. 优化同步嵌入式端LOG与VCD使能状态的速率
-5. 调整部分UI界面
-6. 修复部分显示错误
+version https://git-lfs.github.com/spec/v1
+oid sha256:7bd6641871e101fe5420637752709ca618fb77722aaa5e2cf0c633cfa7a310ea
+size 201

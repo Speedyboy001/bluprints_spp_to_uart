@@ -1,4 +1,3 @@
-tlkdrv/ext/lcd/st77903_data/tlkdrv_st77903_backBuffer.o: \
- ../tlkdrv/ext/lcd/st77903_data/tlkdrv_st77903_backBuffer.c \
- ../tlkdrv/ext/lcd/st77903_data/tlkdrv_st77903_backBuffer.h
-../tlkdrv/ext/lcd/st77903_data/tlkdrv_st77903_backBuffer.h:
+version https://git-lfs.github.com/spec/v1
+oid sha256:a422499756b63c38e9e88661365c967ed579c9e242a970900572e0b3aaf4d7ae
+size 241
