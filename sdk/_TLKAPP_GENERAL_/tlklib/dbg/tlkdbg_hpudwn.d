@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e21f25ef7ea34674055ecc38b958e683b45129db06061755f8b1a868acacf33d
-size 738
+tlklib/dbg/tlkdbg_hpudwn.o: ../tlklib/dbg/tlkdbg_hpudwn.c \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/tlk_config.h \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/app_config.h \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/tlkapp_general/tlkapp_config.h
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/tlk_config.h:
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/app_config.h:
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/tlkapp_general/tlkapp_config.h:

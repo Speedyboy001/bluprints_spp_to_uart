@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b08273c080fb48b9c5f1a714d080abff61fb5b1ed8bd6addff0e1aa26ed3e9a4
-size 785
+tlklib/os/freertos/portable/GCC/RISC-V/portASM.o: \
+ ../tlklib/os/freertos/portable/GCC/RISC-V/portASM.S \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/tlk_config.h \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/app_config.h \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/tlkapp_general/tlkapp_config.h
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/tlk_config.h:
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/app_config.h:
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/tlkapp_general/tlkapp_config.h:

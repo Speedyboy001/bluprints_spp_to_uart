@@ -1,3 +1,42 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:51f35e6ad4b9fef2f4bad8cc22a65a2027592f8d51940186c61c64cc26561d97
-size 1413
+/********************************************************************************************************
+ * @file	tlkusb_cdc.h
+ *
+ * @brief	This is the header file for BTBLE SDK
+ *
+ * @author	BTBLE GROUP
+ * @date	2022
+ *
+ * @par     Copyright (c) 2022, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
+ *
+ *          Licensed under the Apache License, Version 2.0 (the "License");
+ *          you may not use this file except in compliance with the License.
+ *          You may obtain a copy of the License at
+ *
+ *              http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *          Unless required by applicable law or agreed to in writing, software
+ *          distributed under the License is distributed on an "AS IS" BASIS,
+ *          WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *          See the License for the specific language governing permissions and
+ *          limitations under the License.
+ *
+ *******************************************************************************************************/
+#ifndef TLKUSB_CDC_H
+#define TLKUSB_CDC_H
+
+#if (TLK_USB_CDC_ENABLE)
+
+
+typedef void(*TlkUsbCdcRecvCB)(uint08 intfNum, uint08 *pData, uint08 dataLen);
+
+int tlkusb_cdc_init(void);
+
+void tlkusb_cdc_regRecvCB(TlkUsbCdcRecvCB cb);
+
+int tlkusb_cdc_sendData(uint08 intfNum, uint08 *pData, uint08 dataLen);
+
+
+#endif //#if (TLK_USB_CDC_ENABLE)
+
+#endif //TLKUSB_CDC_H
+

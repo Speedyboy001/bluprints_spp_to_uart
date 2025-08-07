@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f959daef0dc34f01953cbeb89e5534d0a940f42c660cf59d42e32ab2f88b20f0
-size 1772
+tlkapi/tlkapi_tree.o: ../tlkapi/tlkapi_tree.c \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/string.h \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/compiler.h \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/types.h \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/tlk_config.h \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/app_config.h \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/tlkapp_general/tlkapp_config.h \
+ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/tlk_debug.h \
+ ../tlkapi/tlkapi_type.h ../tlkapi/tlkapi_error.h ../tlkapi/tlkapi_tree.h \
+ ../tlkapi/tlkapi_debug.h
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/string.h:
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/compiler.h:
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/types.h:
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/tlk_config.h:
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/app_config.h:
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/app/tlkapp_general/tlkapp_config.h:
+E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/tlk_debug.h:
+../tlkapi/tlkapi_type.h:
+../tlkapi/tlkapi_error.h:
+../tlkapi/tlkapi_tree.h:
+../tlkapi/tlkapi_debug.h:

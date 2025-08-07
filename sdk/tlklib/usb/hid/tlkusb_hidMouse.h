@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c73d10ff528277fe702d6d66e63986a93ce868ec881c98b6078564e1157c1aa2
-size 1224
+/********************************************************************************************************
+ * @file	tlkusb_hidMouse.h
+ *
+ * @brief	This is the header file for BTBLE SDK
+ *
+ * @author	BTBLE GROUP
+ * @date	2022
+ *
+ * @par     Copyright (c) 2022, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
+ *
+ *          Licensed under the Apache License, Version 2.0 (the "License");
+ *          you may not use this file except in compliance with the License.
+ *          You may obtain a copy of the License at
+ *
+ *              http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *          Unless required by applicable law or agreed to in writing, software
+ *          distributed under the License is distributed on an "AS IS" BASIS,
+ *          WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *          See the License for the specific language governing permissions and
+ *          limitations under the License.
+ *
+ *******************************************************************************************************/
+#ifndef TLKUSB_HID_MOUSE_H
+#define TLKUSB_HID_MOUSE_H
+
+#if (TLKUSB_HID_MOUSE_ENABLE)
+
+
+
+
+
+
+
+
+
+#endif //#if (TLKUSB_HID_MOUSE_ENABLE)
+
+#endif //TLKUSB_HID_MOUSE_H
+
+
