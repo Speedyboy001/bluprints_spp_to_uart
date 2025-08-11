@@ -469,7 +469,9 @@ int spp_onReceiveData(uint16 connHandle, rf_packet_att_write_t *p)
 		else
 		{
 //			blc_gatt_pushHandleValueNotify(connHandle, SPP_SERVER_TO_CLIENT_DP_H, (void *)"BUFFER_OVERFLOW\r\n", 17);
+			uart_send(UART1,"DATA DROPPED",12);
 		}
+
 	}
 	// When buffer is getting full
 	if(rb_count(&ble_rb_rx) > RTS_THRESHOLD_BLE) {

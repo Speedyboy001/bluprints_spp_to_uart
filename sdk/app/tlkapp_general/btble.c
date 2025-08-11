@@ -33,28 +33,38 @@ extern int blc_ll_getCurrentConnectionNumber(void);
 //extern int bth_hci_sendWriteSimplePairingModeCmd(uint08 spMode);
 //extern int bth_hci_sendWriteSecureConnHostSupportCmd(uint08 isSupport);
 //data callback for the classic data
-
+//extern volatile uint08 uart_busy_flag;
 uint08 pcode[6] = {1,2,3,4};
 void spp_rx_callback(uint16 aclHandle, uint08 rfcHandle, uint08 *pData, uint16 dataLen)
 {
 
     g_aclHandle = aclHandle;
     g_rfcHandle = rfcHandle;
-//	ringbuffer_t *used_buffer = (rfcHandle == 1)? &spp_rb_rx_1: &spp_rb_rx_2;
-    for (uint16 i = 0; i < dataLen; i++) {
-    	if(!rb_is_full(&spp_rb_rx_1))
+	ringbuffer_t *used_buffer = (rfcHandle == 1)? &spp_rb_rx_1: &spp_rb_rx_2;
+    // Only push SPP2 data if SPP1 is empty
+//        if (rfcHandle > 1 && !rb_is_empty(&spp_rb_rx_1)) {
+//            // SPP2 is logically paused, do not push data
+//            uart_send(UART1, "SPP2 PAUSED", 11);
+//            return;
+//        }
+	for (uint16 i = 0; i < dataLen; i++) {
+    	if(!rb_is_full(used_buffer))
     	{
-    			rb_push(&spp_rb_rx_1, pData[i]);
+    			rb_push(used_buffer, pData[i]);
     	}
     	else
     	{
     		//do something
+//    		uart_send(UART1,"DATA DROPPED",12);
     	}
     }
-    if(rb_count(&spp_rb_rx_1) > RTS_THRESHOLD)
+    if(rb_count(used_buffer) > RTS_THRESHOLD)
     {
     	tlkbt_hci_setC2hSppFlowCtrl(1);
     }
+//	if(rfcHandle > 1 && uart_busy_flag == 1)tlkbt_hci_setC2hSppFlowCtrl(1);
+//	if(rfcHandle > 1 && uart_busy_flag == 2)tlkbt_hci_setC2hSppFlowCtrl(0);
+//	else tlkbt_hci_setC2hSppFlowCtrl(0);
 //    int i = sprintf(temp,"rfchandle = %d",g_rfcHandle);
 //    uart_send(UART1, temp, i);
 

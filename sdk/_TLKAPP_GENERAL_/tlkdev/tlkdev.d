@@ -43,7 +43,6 @@ tlkdev/tlkdev.o: ../tlkdev/tlkdev.c \
  E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlksys/tlksys_adapt.h \
  E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlksys/tlksys_pm.h \
  E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlkdev/sys/tlkdev_store.h \
- E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlkdev/sys/tlkdev_codec.h \
  E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlkdev/sys/tlkdev_usb.h
 E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlkapi/tlkapi_stdio.h:
 E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk\core/string.h:
@@ -90,5 +89,4 @@ E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0
 E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlksys/tlksys_adapt.h:
 E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlksys/tlksys_pm.h:
 E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlkdev/sys/tlkdev_store.h:
-E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlkdev/sys/tlkdev_codec.h:
 E:\scratch_workspace\spp\telink_b91m_btble_dual_mode_general_sdk-5.3.0.0_Patch_0002\sdk/tlkdev/sys/tlkdev_usb.h:

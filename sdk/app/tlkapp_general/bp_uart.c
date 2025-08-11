@@ -29,10 +29,10 @@ bool rb_is_full(ringbuffer_t *rb) {
 }
 
 void rb_push(ringbuffer_t *rb, char c) {
-	if (!rb_is_full(rb)) {
+//	if (!rb_is_full(rb)) {
 		rb->buffer[rb->head] = c;
 		rb->head = (rb->head + 1) % RX_TX_FIFO_SIZE;
-	}
+//	}
 }
 
 bool rb_pop(ringbuffer_t *rb, uint08 *c) {

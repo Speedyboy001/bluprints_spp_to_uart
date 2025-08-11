@@ -215,7 +215,7 @@
 #define TLK_DEV_SERIAL_ENABLE        (0 && TLK_CFG_DEV_ENABLE)
 #endif
 #ifndef TLK_DEV_CODEC_ENABLE
-#define TLK_DEV_CODEC_ENABLE         (1 && TLK_CFG_DEV_ENABLE)
+#define TLK_DEV_CODEC_ENABLE         (0 && TLK_CFG_DEV_ENABLE)//changed
 #endif
 #ifndef TLK_DEV_STORE_ENABLE
 #define TLK_DEV_STORE_ENABLE         (1 && TLK_CFG_DEV_ENABLE)
