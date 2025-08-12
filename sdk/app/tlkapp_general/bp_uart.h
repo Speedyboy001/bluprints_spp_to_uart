@@ -10,9 +10,9 @@
 
 #include "types.h"
 #include <stdbool.h>
-#define RX_TX_FIFO_SIZE 2048
+#define RX_TX_FIFO_SIZE 4096
 #define RTS_THRESHOLD (RX_TX_FIFO_SIZE * 3 / 4)
-#define RTS_THRESHOLD_BLE (RX_TX_FIFO_SIZE * 1 / 4)
+#define RTS_THRESHOLD_BLE (RX_TX_FIFO_SIZE * 3 / 4)
 //volatile uint16_t head = 0, tail = 0;
 typedef struct {
     volatile char buffer[RX_TX_FIFO_SIZE];

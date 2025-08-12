@@ -5,29 +5,17 @@
  *      Author: saurabh
  */
 #include <app/tlkapp_general/spp_serial.h>
-
 #include "core/tlk_config.h"
-
 #include <uart.h>
-
 #include <string.h>
-
 #include "tlkapi/tlkapi_error.h"
-
 #include <clock.h>
-
 #include <stdio.h>
-
 #include "tlkstk/ble/ble_common.h"
-
 #include "btble.h"
-
 #include "tlkmdi/le/tlkmdi_lemgrAtt.h"
-
 #include <stdlib.h>
-
 #include "stimer.h"
-
 #include "tlkdrv/B91/compatibility_pack/cmpt.h"
 
 /******************************MACROS FOR BUFFER**************************/
@@ -339,8 +327,8 @@ void process_at_cmd(uint08 * cmd) {
             }
             if (tlkmmi_btmgr_setAddr(bt_addr) == TLK_ENONE) {
                 notify_cmd_ok();
-                delay_ms(100);
-                core_reboot();
+//                delay_ms(100);
+//                core_reboot();
 
             }
         } else if ((strstr((const char * ) cmd, "+LEMAC=") != NULL)) //LEADDRESS
@@ -627,8 +615,8 @@ void serial_rx_handler(void) {
 }
 
 volatile uint08 uart_busy_flag = 0; //0 none, 1 spp , 2 spp, 3 ble
-volatile uint32_t last_sent_tick = 0; // Last time SPP sent data (in ms)
-#define DATA_DELAY_SWITCH 500000
+volatile uint32_t last_sent_tick = 0; //time SPP sent data
+#define DATA_DELAY_SWITCH 500000 //500ms delay for switching buffers
 
 static void send_data_to_uart(ringbuffer_t * data_buffer, bool is_spp) {
     uint08 p_data;
@@ -657,6 +645,7 @@ static void send_data_to_uart(ringbuffer_t * data_buffer, bool is_spp) {
         }
         if (rb_count(data_buffer) < RX_TX_FIFO_SIZE / 2 && is_spp) {
             tlkbt_hci_setC2hSppFlowCtrl(0);
+            gpio_set_low_level(GPIO_PB4);
         }
     }
 }
@@ -674,17 +663,20 @@ void process_bt_handler() {
         if (rb_is_empty( & spp_rb_rx_1) && clock_time_exceed(last_sent_tick, DATA_DELAY_SWITCH)) {
             uart_busy_flag = 0;
         }
+        return;
     }
     if (uart_busy_flag == 2) {
         send_data_to_uart( & spp_rb_rx_2, true); // SPP 2
         if (rb_is_empty( & spp_rb_rx_2) && clock_time_exceed(last_sent_tick, DATA_DELAY_SWITCH)) {
             uart_busy_flag = 0;
         }
+        return;
     } else if (uart_busy_flag == 3) {
         send_data_to_uart( & ble_rb_rx, false); // BLE
         if (rb_is_empty( & ble_rb_rx) && clock_time_exceed(last_sent_tick, DATA_DELAY_SWITCH)) {
             uart_busy_flag = 0;
         }
+        return;
     }
 }
 

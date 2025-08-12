@@ -41,12 +41,6 @@ void spp_rx_callback(uint16 aclHandle, uint08 rfcHandle, uint08 *pData, uint16 d
     g_aclHandle = aclHandle;
     g_rfcHandle = rfcHandle;
 	ringbuffer_t *used_buffer = (rfcHandle == 1)? &spp_rb_rx_1: &spp_rb_rx_2;
-    // Only push SPP2 data if SPP1 is empty
-//        if (rfcHandle > 1 && !rb_is_empty(&spp_rb_rx_1)) {
-//            // SPP2 is logically paused, do not push data
-//            uart_send(UART1, "SPP2 PAUSED", 11);
-//            return;
-//        }
 	for (uint16 i = 0; i < dataLen; i++) {
     	if(!rb_is_full(used_buffer))
     	{
@@ -55,18 +49,15 @@ void spp_rx_callback(uint16 aclHandle, uint08 rfcHandle, uint08 *pData, uint16 d
     	else
     	{
     		//do something
-//    		uart_send(UART1,"DATA DROPPED",12);
+    		uart_send(UART1,"DATA DROPPED",12);
+//   		tlkbt_hci_setC2hSppFlowCtrl(1);
     	}
     }
     if(rb_count(used_buffer) > RTS_THRESHOLD)
     {
     	tlkbt_hci_setC2hSppFlowCtrl(1);
+    	gpio_set_high_level(GPIO_PB4);
     }
-//	if(rfcHandle > 1 && uart_busy_flag == 1)tlkbt_hci_setC2hSppFlowCtrl(1);
-//	if(rfcHandle > 1 && uart_busy_flag == 2)tlkbt_hci_setC2hSppFlowCtrl(0);
-//	else tlkbt_hci_setC2hSppFlowCtrl(0);
-//    int i = sprintf(temp,"rfchandle = %d",g_rfcHandle);
-//    uart_send(UART1, temp, i);
 
 }
 
@@ -82,29 +73,6 @@ void spp_init(void) {
 //    tlkmmi_sys_restoreFactorySettings();
 }
 
-//void btble_conn_on_off() //indiacte bt/ble is connected or not
-//{
-//	if (btp_spp_getConnCount() > 0) {
-//		gpio_set_high_level(GPIO_PB7);
-//		btc_conn_flag = 1;
-//	}
-//	else if(blc_ll_getCurrentConnectionNumber() > 0)
-//	{
-//		blec_conn_flag = 1;
-//		gpio_set_high_level(GPIO_PB7);
-//	}
-//	else if(!btp_spp_getConnCount())
-//	{
-//		gpio_set_low_level(GPIO_PB7);
-//				btc_conn_flag = 0;
-//	}
-//	else{
-//		gpio_set_low_level(GPIO_PB7);
-////		btc_conn_flag = 0;
-//		blec_conn_flag = 0;
-//	}
-//
-//}
 void btble_conn_on_off() // indicate BT/BLE connection status
 {
 	int bt_conn = btp_spp_getConnCount();
@@ -118,12 +86,5 @@ void btble_conn_on_off() // indicate BT/BLE connection status
 
 	btc_conn_flag = (bt_conn > 0);
 	blec_conn_flag = (ble_conn > 0);
-//	if(bt_conn == 0)
-//	{
-//		rb_init(&spp_rb_rx_1);
-//	}
-//	else {
-//		rb_init(&ble_rb_rx);
-//	}
 }
 

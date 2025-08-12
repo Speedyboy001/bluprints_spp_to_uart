@@ -473,14 +473,12 @@ int spp_onReceiveData(uint16 connHandle, rf_packet_att_write_t *p)
 		}
 
 	}
-	// When buffer is getting full
 	if(rb_count(&ble_rb_rx) > RTS_THRESHOLD_BLE) {
-		blc_att_setSlaveRxMTUSize(23);  // Reduce MTU
+		blc_att_setSlaveRxMTUSize(23);
 	}
 
-	// When buffer has space (add this)
 	if(rb_count(&ble_rb_rx) < RTS_THRESHOLD_BLE ) {
-		blc_att_setSlaveRxMTUSize(150);  // Restore normal MTU
+		blc_att_setSlaveRxMTUSize(150);
 	}
 	#if (APP_BLE_TEST_ENABLE)
 	gAppBleTestRecvCount ++;

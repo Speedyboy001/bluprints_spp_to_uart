@@ -29,10 +29,10 @@ bool rb_is_full(ringbuffer_t *rb) {
 }
 
 void rb_push(ringbuffer_t *rb, char c) {
-//	if (!rb_is_full(rb)) {
+	if (!rb_is_full(rb)) {
 		rb->buffer[rb->head] = c;
 		rb->head = (rb->head + 1) % RX_TX_FIFO_SIZE;
-//	}
+	}
 }
 
 bool rb_pop(ringbuffer_t *rb, uint08 *c) {
@@ -69,6 +69,10 @@ ringbuffer_t spp_rb_rx_2;
 void usr_serial_init(void) {
 	unsigned short div = 0;
 	unsigned char bwpc = 0;
+	/*debugging*/
+	gpio_function_en(GPIO_PB4);
+	gpio_output_en(GPIO_PB4);
+	gpio_input_dis(GPIO_PB4);
 	/**********for bt conn/disconnect indication*************/
 	gpio_function_en(GPIO_PB7);
 	gpio_output_en(GPIO_PB7);

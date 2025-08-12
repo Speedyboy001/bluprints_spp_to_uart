@@ -139,32 +139,13 @@ int tlkmdi_le_setAclName(uint08 *pName, uint08 nameLen) {
     unsigned char offset;
 
     if (pName == nullptr || nameLen == 0) return TLK_ENONE;
-    if (nameLen > 12) nameLen = 12;
+    if (nameLen > 16) nameLen = 16;
     offset = 0;
     sTlkMdiLemgrAdvData[offset++] = 0x02;  // BLE general discoverable mode and BR/EDR not supported
     sTlkMdiLemgrAdvData[offset++] = DT_FLAGS;
     sTlkMdiLemgrAdvData[offset++] = 0x06;
     sTlkMdiLemgrAdvData[offset++] = 0x11;
     sTlkMdiLemgrAdvData[offset++] = DT_COMPLETE_LIST_128BIT_SERVICE_UUID;
-//    bool uuid_check_flg =0;
-//    	for(int i =0; i<16; i++)
-//    	{
-//    		if(fc_hw_flag.service_uuid[i] != 0)
-//    		{
-//    			uuid_check_flg = 1;
-//    			break;
-//    		}
-//    	}
-//    	if(!uuid_check_flg)
-//    		{
-//    			uint08 default_service_uuid[16] = {0x10,0x19,0x0d,0x0c,0x0b,0x0a,0x09,0x08,0x07,0x06,0x05,0x04,0x03,0x02,0x01,0x00};
-//    			for(int i = 0; i<16 ; i++)
-//    					{
-//    						sTlkMdiLemgrAdvData[offset++] =  default_service_uuid[15-i];
-//    					}
-//    		}
-//    	else {
-
 //    sTlkMdiLemgrAdvData[offset++] = 0x00;
 //    sTlkMdiLemgrAdvData[offset++] = 0x01;
 //    sTlkMdiLemgrAdvData[offset++] = 0x02;
@@ -181,7 +162,6 @@ int tlkmdi_le_setAclName(uint08 *pName, uint08 nameLen) {
 //    sTlkMdiLemgrAdvData[offset++] = 0x0D;
 //    sTlkMdiLemgrAdvData[offset++] = 0x19;
 //    sTlkMdiLemgrAdvData[offset++] = 0x10;
-//    	}
     for(int i = 0; i<16 ; i++)
     		{
     			sTlkMdiLemgrAdvData[offset++] =  fc_hw_flag.service_uuid[15-i];
