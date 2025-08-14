@@ -613,8 +613,8 @@ void serial_rx_handler(void) {
         core_enable_interrupt();
     }
 }
-
-volatile uint08 uart_busy_flag = 0; //0 none, 1 spp , 2 spp, 3 ble
+buffer_sts_t buffer_sts = BTBLE_IDLE;
+//volatile uint08 uart_busy_flag = 0; //0 none, 1 spp , 2 spp, 3 ble
 volatile uint32_t last_sent_tick = 0; //time SPP sent data
 #define DATA_DELAY_SWITCH 500000 //500ms delay for switching buffers
 
@@ -636,7 +636,7 @@ static void send_data_to_uart(ringbuffer_t * data_buffer, bool is_spp) {
             uart_set_cts_dis(UART1);
         }
 
-    } else {
+    } else {//FLW DISABLE
         while (!rb_is_empty(data_buffer)) {
             if (rb_pop(data_buffer, & p_data)) {
                 uart_send_byte(UART1, p_data);
@@ -646,35 +646,38 @@ static void send_data_to_uart(ringbuffer_t * data_buffer, bool is_spp) {
         if (rb_count(data_buffer) < RX_TX_FIFO_SIZE / 2 && is_spp) {
             tlkbt_hci_setC2hSppFlowCtrl(0);
             gpio_set_low_level(GPIO_PB4);
+//            uart_send(UART1,"START\r\n",7);
         }
     }
 }
 
 void process_bt_handler() {
     if (rb_is_empty( & spp_rb_rx_1) && rb_is_empty( & ble_rb_rx) && rb_is_empty( & spp_rb_rx_2)) return;
-    if (uart_busy_flag == 0) {
-        if (btc_conn_flag && !rb_is_empty( & spp_rb_rx_1)) uart_busy_flag = 1;
-        else if (btc_conn_flag && !rb_is_empty( & spp_rb_rx_2)) uart_busy_flag = 2;
-        else if (blec_conn_flag && !rb_is_empty( & ble_rb_rx)) uart_busy_flag = 3;
+    if (buffer_sts == BTBLE_IDLE) {
+        if (btc_conn_flag && !rb_is_empty( & spp_rb_rx_1)) buffer_sts = SPP_ONE_DATA;
+        else if (btc_conn_flag && !rb_is_empty( & spp_rb_rx_2)) buffer_sts = SPP_TWO_DATA;
+        else if (blec_conn_flag && !rb_is_empty( & ble_rb_rx)) buffer_sts = BLE_DATA;
     }
 
-    if (uart_busy_flag == 1) {
+    if (buffer_sts == SPP_ONE_DATA) {
         send_data_to_uart( & spp_rb_rx_1, true); // SPP 1
         if (rb_is_empty( & spp_rb_rx_1) && clock_time_exceed(last_sent_tick, DATA_DELAY_SWITCH)) {
-            uart_busy_flag = 0;
+        	buffer_sts = BTBLE_IDLE;
         }
         return;
     }
-    if (uart_busy_flag == 2) {
+    if (buffer_sts == SPP_TWO_DATA) {
         send_data_to_uart( & spp_rb_rx_2, true); // SPP 2
         if (rb_is_empty( & spp_rb_rx_2) && clock_time_exceed(last_sent_tick, DATA_DELAY_SWITCH)) {
-            uart_busy_flag = 0;
+        	buffer_sts = BTBLE_IDLE;
         }
         return;
-    } else if (uart_busy_flag == 3) {
+    } else if (buffer_sts == BLE_DATA) {
+//        tlkbt_hci_setC2hSppFlowCtrl(1);
         send_data_to_uart( & ble_rb_rx, false); // BLE
         if (rb_is_empty( & ble_rb_rx) && clock_time_exceed(last_sent_tick, DATA_DELAY_SWITCH)) {
-            uart_busy_flag = 0;
+        	buffer_sts = BTBLE_IDLE;
+//        	tlkbt_hci_setC2hSppFlowCtrl(0);
         }
         return;
     }

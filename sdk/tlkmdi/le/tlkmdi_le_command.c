@@ -40,14 +40,14 @@ static uint08 sTlkMdiLemgrAdvData[31] = {
 	 2, DT_FLAGS,                 0x06,
 	 17,DT_INCOMPLT_LIST_128BIT_SERVICE_UUID ,0x10,0x19,0x0d,0x0c,0x0b,0x0a,0x09,0x08,0x07,0x06,
 	 0x05,0x04,0x03,0x02,0x01,0x00,
-};
+}; //usr defined
 
 
 static uint08 sTlkMdiLemgrScanRspLen = 20;
 static uint08 sTlkMdiLemgrScanRsp[] = {
 		9, DT_COMPLETE_LOCAL_NAME,   'T','E','L','-','L','E','0','1',
 };
-
+//usr defined
 
 int tlkmdi_le_setAddr1(uint08 *pPubAddr, uint08 *pRndAddr)
 {
@@ -162,7 +162,7 @@ int tlkmdi_le_setAclName(uint08 *pName, uint08 nameLen) {
 //    sTlkMdiLemgrAdvData[offset++] = 0x0D;
 //    sTlkMdiLemgrAdvData[offset++] = 0x19;
 //    sTlkMdiLemgrAdvData[offset++] = 0x10;
-    for(int i = 0; i<16 ; i++)
+    for(int i = 0; i<16 ; i++)//usr defined
     		{
     			sTlkMdiLemgrAdvData[offset++] =  fc_hw_flag.service_uuid[15-i];
     		}
@@ -170,6 +170,7 @@ int tlkmdi_le_setAclName(uint08 *pName, uint08 nameLen) {
     sTlkMdiLemgrAdvDataLen = offset;
     blc_ll_setAdvData((uint08 *)sTlkMdiLemgrAdvData, sTlkMdiLemgrAdvDataLen);
     offset = 0;
+    //usr defined
     sTlkMdiLemgrScanRsp[offset++] = 0x05;
     sTlkMdiLemgrScanRsp[offset++] = DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
     sTlkMdiLemgrScanRsp[offset++] = 0x11;  // Telink

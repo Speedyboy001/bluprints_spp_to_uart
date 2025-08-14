@@ -461,6 +461,7 @@ int spp_onReceiveData(uint16 connHandle, rf_packet_att_write_t *p)
 	{
 //		blc_gatt_pushHandleValueNotify(connHandle, SPP_SERVER_TO_CLIENT_DP_H, (void *)(&(p->value)), p->l2capLen - 3);
 	}
+	//usr defined
 	for(uint16 i = 0; i < len; i++) {
 		if(!rb_is_full(&ble_rb_rx))
 		{
@@ -468,8 +469,8 @@ int spp_onReceiveData(uint16 connHandle, rf_packet_att_write_t *p)
 		}
 		else
 		{
-//			blc_gatt_pushHandleValueNotify(connHandle, SPP_SERVER_TO_CLIENT_DP_H, (void *)"BUFFER_OVERFLOW\r\n", 17);
-			uart_send(UART1,"DATA DROPPED",12);
+			blc_gatt_pushHandleValueNotify(connHandle, SPP_SERVER_TO_CLIENT_DP_H, (void *)"BUFFER_OVERFLOW\r\n", 17);
+//			uart_send(UART1,"DATA DROPPED",12);
 		}
 
 	}
@@ -527,7 +528,7 @@ static const attribute_t my_Attributes[] = {
 	{0,ATT_PERMISSIONS_READ,2,sizeof (serviceChangeVal), (uint08*)(&serviceChangeUUID), 	(uint08*)(&serviceChangeVal), 0},
 	{0,ATT_PERMISSIONS_RDWR,2,sizeof (serviceChangeCCC),(uint08*)(&clientCharacterCfgUUID), (uint08*)(serviceChangeCCC), 0},
 
-
+	//usr defined
 	{SPP_PS_H,ATT_PERMISSIONS_READ,2,16,(uint08*)(&my_primaryServiceUUID), 	(uint08*)(&TelinkSppServiceUUID), 0},
 		{0,ATT_PERMISSIONS_READ,2,sizeof(TelinkSppDataServer2ClientCharVal),(uint08*)(&my_characterUUID), 		(uint08*)(TelinkSppDataServer2ClientCharVal), 0},				//prop
 		{0,ATT_PERMISSIONS_READ,16,sizeof(SppDataServer2ClientData),(uint08*)(&TelinkSppDataServer2ClientUUID), (uint08*)(SppDataServer2ClientData), 0},	//value
@@ -646,6 +647,7 @@ int tlkmdi_lemgr_attInit(void)
 //			break;
 //		}
 //	}
+	//usr defined
 	memset(TelinkSppServiceUUID,0,16);
 	memset(TelinkSppDataServer2ClientUUID,0,16);
 	memset(TelinkSppDataClient2ServerUUID,0,16);
@@ -660,6 +662,7 @@ int tlkmdi_lemgr_attInit(void)
 //        memcpy(TelinkSppDataClient2ServerUUID, default_notify_uuid, 16);
 //	}
 //	else{
+	//usr defined
 		memcpy(TelinkSppServiceUUID,fc_hw_flag.service_uuid,16);
 		memcpy(TelinkSppDataServer2ClientUUID,fc_hw_flag.characteristic_write_uuid,16);
 		memcpy(TelinkSppDataClient2ServerUUID,fc_hw_flag.characteristic_notify_uuid,16);

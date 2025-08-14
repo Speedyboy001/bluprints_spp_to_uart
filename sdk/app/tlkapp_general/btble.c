@@ -14,12 +14,12 @@
 #include "tlkdrv/B91/compatibility_pack/cmpt.h"
 #include "tlkstk/bt/bth/bth_event.h"
 #include "tlkstk/bt/bth/bth_acl.h"
-
+#include <stdio.h>
 volatile bool btc_conn_flag = 0;
 volatile bool blec_conn_flag = 0;
 uint16 g_aclHandle = 0;
 uint08 g_rfcHandle = 0;
-uint08 temp[128];
+uint08 check_buff[128]; //for debugging
 typedef void (*BtpSppRecvDataCB)(uint16 aclHandle, uint08 rfcHandle, uint08 *pData, uint16 dataLen);
 typedef void(*TlkMmiBtMgrAclConnectCallback)(uint16 handle, uint08 status, uint08 *pBtAddr);
 typedef void(*TlkMmiBtMgrAclDisconnCallback)(uint16 handle, uint08 reason, uint08 *pBtAddr);
@@ -40,6 +40,9 @@ void spp_rx_callback(uint16 aclHandle, uint08 rfcHandle, uint08 *pData, uint16 d
 
     g_aclHandle = aclHandle;
     g_rfcHandle = rfcHandle;
+//    int i =sprintf(check_buff,"rfc=%d",rfcHandle);
+//    uart_send(UART1, check_buff, i);
+//    if(rfcHandle == 2)return;
 	ringbuffer_t *used_buffer = (rfcHandle == 1)? &spp_rb_rx_1: &spp_rb_rx_2;
 	for (uint16 i = 0; i < dataLen; i++) {
     	if(!rb_is_full(used_buffer))
@@ -49,15 +52,21 @@ void spp_rx_callback(uint16 aclHandle, uint08 rfcHandle, uint08 *pData, uint16 d
     	else
     	{
     		//do something
-    		uart_send(UART1,"DATA DROPPED",12);
-//   		tlkbt_hci_setC2hSppFlowCtrl(1);
+//    		uart_send(UART1,"DATA DROPPED\r\n",14);
+    		tlkbt_hci_setC2hSppFlowCtrl(1);
     	}
     }
+//	int i = sprintf(check_buff,"rfc=%d",rb_count(used_buffer) );
+//	uart_send(UART1, check_buff, i);
     if(rb_count(used_buffer) > RTS_THRESHOLD)
     {
     	tlkbt_hci_setC2hSppFlowCtrl(1);
+//    	   int i = sprintf(check_buff,"rfc=%d",rb_count(used_buffer) );
+//    	    uart_send(UART1, check_buff, i);
     	gpio_set_high_level(GPIO_PB4);
+//    	uart_send(UART1,"PAUSE\r\n",7);
     }
+
 
 }
 

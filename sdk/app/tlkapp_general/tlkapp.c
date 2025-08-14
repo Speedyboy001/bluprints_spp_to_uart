@@ -76,7 +76,7 @@ int tlkapp_init(void)
 
 	tlk_dbgio_init();
 	tlkcfg_load();
-	fetch_flag_flash(); //flash init
+	fetch_flag_flash(); //flash init usr defined
 	#if (TLK_CFG_SYS_ENABLE)
 	ret = tlksys_init();
 	if(ret != TLK_ENONE) return ret;
@@ -101,8 +101,8 @@ int tlkapp_init(void)
 	if(ret != TLK_ENONE) return ret;
 	#endif
 	
-	usr_serial_init();
-	spp_init();
+	usr_serial_init(); //usr defined
+	spp_init();			//usr defined
 	
 	return TLK_ENONE;
 }
@@ -155,7 +155,7 @@ void tlkapp_handler(void)
 	#if(TLK_CFG_PM_ENABLE)
 	tlkapp_pm_handler();
 	#endif
-	main_loop();
+	main_loop(); //usr defined
 }
 
 #if (TLKMMI_SYSTEM_ENABLE)

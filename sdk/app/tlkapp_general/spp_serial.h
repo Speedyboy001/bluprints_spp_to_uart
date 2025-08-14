@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ef4450e9967ad9f8677b7b27774d071a8c391fab3a78eab433fff821133f1645
-size 627
+/*
+ * app_serial.h
+ *
+ *  Created on: 22-Jun-2025
+ *      Author: saurabh
+ */
+
+#ifndef APP_TLKAPP_GENERAL_SPP_SERIAL_H_
+#define APP_TLKAPP_GENERAL_SPP_SERIAL_H_
+#include "types.h"
+#include "bp_uart.h"
+typedef struct{
+	uint08 hw_flow_ctrl_flg;
+	uint08 pin_en_flag;
+	uint08 pincode[6];
+	uint08 pinlen;
+	uint08 service_uuid[16];
+	uint08 characteristic_notify_uuid[16];
+	uint08 characteristic_write_uuid[16];
+//	uint08 reserved[254];
+}flag_typedef_t;
+//typedef unsigned char flag_buffer[2];
+//extern flag_buffer fc_hw_flag;
+typedef enum {
+	BTBLE_IDLE =0,
+	SPP_ONE_DATA,
+	SPP_TWO_DATA,
+	BLE_DATA
+}buffer_sts_t;
+extern flag_typedef_t fc_hw_flag;
+
+#endif /* APP_TLKAPP_GENERAL_SPP_SERIAL_H_ */

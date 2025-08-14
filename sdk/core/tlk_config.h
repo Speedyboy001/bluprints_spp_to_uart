@@ -193,7 +193,7 @@
 #define TLK_STK_BTP_ENABLE           (1 && TLK_STK_BTH_ENABLE)
 #endif
 #ifndef TLK_STK_BTACl_NUMB
-#define TLK_STK_BTACl_NUMB           2
+#define TLK_STK_BTACl_NUMB           2 //default is 2 change to 1 for only to work with the single connection/testing
 #endif
 #ifndef TLK_STK_BTSCO_NUMB
 #define TLK_STK_BTSCO_NUMB           1

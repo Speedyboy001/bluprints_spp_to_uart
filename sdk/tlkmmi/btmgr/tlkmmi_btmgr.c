@@ -72,6 +72,8 @@ static int tlkmmi_btmgr_init(uint08 procID, uint16 taskID)
 	#if (TLK_MDI_BTREC_ENABLE)
 	tlkmmi_btmgr_recInit();
 	#endif
+
+	//usr defined
 	bth_hci_sendWriteClassOfDeviceCmd(TLKMMI_BTMGR_DEVICE_CLASS);
 	if(fc_hw_flag.pin_en_flag == 1 )
 	{
@@ -92,6 +94,7 @@ static int tlkmmi_btmgr_start(void)
 	if(pDevice != nullptr){
 		#if TLKMMI_BTMGR_BTREC_ENABLE
 //		tlkmmi_btmgr_recStart(pDevice->devAddr, pDevice->devClass, true, true);
+		//usr defined
 		tlkmmi_btmgr_recStart(nullptr, 0, false, false);//don't reconnect
 		#endif
 	}else{
