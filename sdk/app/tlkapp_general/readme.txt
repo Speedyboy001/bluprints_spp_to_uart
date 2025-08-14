@@ -18,4 +18,4 @@ tlkmdi_le_command.c -> changed the ble to always in advertising mode
 tlkmmi_btmgrRec.c   -> channged sacn and paging paramter values(	tlkmdi_btrec_setPageParam(512, 18); // improves connect response
 	tlkmdi_btrec_setScanParam(512, 18, true, true); // improves visibility)
 
-website to check data correctnes https://www.diffchecker.com/text-compare/
+website to check data correctness https://www.diffchecker.com/text-compare/
